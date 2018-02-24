@@ -1,0 +1,43 @@
+<div fxLayout="column">
+
+  <!-- Login form -->
+  <div fxLayout="row">
+    <form [formGroup]="loginForm" (submit)="onFormSubmit()">
+      <div fxLayout="column" fxLayoutGap="10px">
+        <input formControlName="email" type="text" placeholder="User email">
+        <input formControlName="password" type="password" placeholder="Password">
+        <button [disabled]="!loginForm.valid">LOGIN</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Form validation errors -->
+  <div>
+
+    <div *ngIf="(email.invalid && (email.dirty || email.touched))">
+
+      <div *ngIf="email.errors.required">
+        Email is required.
+      </div>
+      <div *ngIf="email.errors.email">
+        Email is not valid.
+      </div>
+
+    </div>
+
+    <div *ngIf="(password.invalid && (password.dirty || password.touched))">
+
+      <div *ngIf="password.errors.required">
+        Password is required.
+      </div>
+
+    </div>
+
+  </div>
+
+  
+
+
+</div>
+
+<simple-notifications [options]="notificationOptions"></simple-notifications>

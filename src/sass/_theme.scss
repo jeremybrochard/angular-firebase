@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+@import "_colors.scss"; 
+
+@include mat-core();
+
+// More info on theming at https://github.com/angular/material2/blob/master/guides/theming.md
+// Create a custom theme at http://mcg.mbitson.com
+
+// Theme using based on primary color md-dark-purple
+$default-primary:     mat-palette($md-dark-purple, 500, 50, 800);
+$default-accent:      mat-palette($md-candy-pink, 500, 100, 900);
+$default-theme: mat-light-theme($default-primary, $default-accent);
+
+@include angular-material-theme($default-theme);
+
+// Alternate theme based on secondary color md-light-purple
+$alternate-primary: mat-palette($md-light-purple, 500, 50, 800);
+$alternate-accent:  mat-palette($mat-indigo, 500, 100, 900);
+$alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
+
+.alternate-theme {
+  @include angular-material-theme($alternate-theme);
+}

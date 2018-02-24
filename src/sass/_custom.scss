@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+}
+
+.container {
+    height: 100%;
+}
+
+.bg-primary {
+
+    &.default {
+        background-color: mat-color($default-primary, default);
+    }
+    
+    &.lighter {
+        background-color: mat-color($default-primary, lighter);
+    }
+
+    &.darker {
+        background-color: mat-color($default-primary, darker);
+    }
+}
+
+.bg-alternate-primary {
+
+    &.default {
+        background-color: mat-color($alternate-primary, default);
+    }
+    
+    &.lighter {
+        background-color: mat-color($alternate-primary, lighter);
+    }
+
+    &.darker {
+        background-color: mat-color($alternate-primary, darker);
+    }
+}
+
+.bg-accent {
+
+    &.default {
+        background-color: mat-color($default-accent, default);
+    }
+
+    &.lighter {
+        background-color: mat-color($default-accent, lighter);
+    }
+
+    &.darker {
+        background-color: mat-color($default-accent, darker);
+    }
+}
+
+.bg-alternate-accent {
+
+    &.default {
+        background-color: mat-color($alternate-accent, default);
+    }
+
+    &.lighter {
+        background-color: mat-color($alternate-accent, lighter);
+    }
+
+    &.darker {
+        background-color: mat-color($alternate-accent, darker);
+    }
+}
