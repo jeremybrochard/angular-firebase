@@ -1,3 +1,46 @@
-<p>
-  signin works!
-</p>
+<!-- Login form -->
+<div fxLayout="column" class="signin mat-elevation-z12">
+
+  <!-- Form header -->
+  <div fxLayout="row" fxLayoutAlign="center center" class="signin-header">
+    <img src="assets/logo.png" alt="site logo">
+  </div>
+
+  <div class="signin-form-content" fxLayout="column" fxLayoutGap="40px">
+
+    <!-- Form Content -->
+    <form [formGroup]="loginForm" (submit)="onFormSubmit()">
+      <div fxLayout="column" fxLayoutGap="22px">
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" formControlName="email" type="email" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="email.hasError('required')">
+            Email is
+            <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" formControlName="password" type="password" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="password.hasError('required')">
+            Password is
+            <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary">{{ rsc.buttons.signin }}</button>
+      </div>
+    </form>
+
+    <!-- Form footer -->
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="8px">
+      <div>Pas de compte?</div>
+      <a [routerLink]="['/login/register']" >Cliquer ici pour en creer un</a>
+    </div>
+
+  </div>
+
+</div>

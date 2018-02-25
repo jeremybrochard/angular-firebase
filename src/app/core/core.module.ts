@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ResourcesService } from "./providers/resources.service";
 import { MixinService } from './providers/mixin.service';
 import { ResourcesFactory } from './factories/resources.factory';
+import { CustomNotificationsService } from './providers/custom-notifications.service';
 
 // Third-party modules
 import { AngularFireModule } from 'angularfire2';
@@ -24,16 +25,16 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AngularFireAuthModule,
   ],
   providers: [
-    AuthGuardService,
-    AuthService,
-    MixinService,
     ResourcesService, {
       provide: APP_INITIALIZER,
       useFactory: ResourcesFactory,
       deps: [ResourcesService],
       multi: true
     },
-
+    AuthService,
+    AuthGuardService,
+    MixinService,
+    CustomNotificationsService
   ]
 })
 export class CoreModule { }

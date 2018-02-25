@@ -1,0 +1,10 @@
+{
+    "errors": {},
+    "pages": {
+        "signin": {
+            "buttons": {
+                "signin": "Se connecter"
+            }
+        }
+    }
+}

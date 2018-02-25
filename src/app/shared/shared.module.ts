@@ -3,8 +3,18 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { 
+  MatButtonModule,
+  MatInputModule
+} from '@angular/material';
+
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+
+const MATERIAL_COMPONENTS = [
+  MatButtonModule,
+  MatInputModule
+]
 
 @NgModule({
   imports: [
@@ -12,6 +22,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ReactiveFormsModule,
     FlexLayoutModule,
     SimpleNotificationsModule.forRoot(),
+    MATERIAL_COMPONENTS
   ],
   declarations: [
     PageNotFoundComponent
@@ -21,7 +32,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ReactiveFormsModule,
     FlexLayoutModule,
     PageNotFoundComponent,
-    SimpleNotificationsModule
+    SimpleNotificationsModule,
+    MATERIAL_COMPONENTS
   ]
 })
 export class SharedModule { }

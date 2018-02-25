@@ -1,8 +1,11 @@
 export const NOTIFICATIONS_OPTIONS: any = {
     position: [
         "bottom",
-        "right"
+        "center"
     ],
     timeOut: 5000,
-    lastOnBottom: true
+    lastOnBottom: true,
+    animate: "fromBottom",
+    maxStack: 3,
+    preventDuplicates: false
 }

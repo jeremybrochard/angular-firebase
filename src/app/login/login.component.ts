@@ -1,69 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../core/providers/auth.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NOTIFICATIONS_OPTIONS } from '../shared/notifications-options';
 import { NotificationsService } from 'angular2-notifications';
+import { CustomNotificationsService } from '../core/providers/custom-notifications.service';
+import { Subscription } from 'rxjs';
+import { Notification } from '../core/models/notification';
+import { NotificationType } from '../core/enums/notification-type';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  loginForm: FormGroup;
-  notificationOptions: any;
-
-  get email(): FormControl {
-    return this.loginForm.get('email') as FormControl;
-  };
-
-  get password(): FormControl {
-    return this.loginForm.get('password') as FormControl;
-  };
+  private notificationOptions: any;
+  private subscription: Subscription;
 
   constructor(
-    private authService: AuthService,
-    private formBuilder: FormBuilder,
-    private notificationService: NotificationsService
-  ) { }
+    private notificationsService: CustomNotificationsService,
+    private angular2NotificationsService: NotificationsService
+  ) {
+    this.subscription = new Subscription();
+    this.subscription.add(
+      this.notificationsService.on().subscribe(
+        (notification: Notification) => {
+          this.displayNotification(notification);
+        }
+      ));
+  }
 
   ngOnInit(): void {
-
     // Get notifications options
     this.notificationOptions = NOTIFICATIONS_OPTIONS;
-
-    // Init login form
-    this.createLoginForm();
   }
 
-  /**
-   * Creates the login form
-   */
-  createLoginForm(): void {
-    this.loginForm = this.formBuilder.group( {
-      email: this.formBuilder.control('', [Validators.required, Validators.email]),
-      password: this.formBuilder.control('', Validators.required)
-    });
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
-  onFormSubmit(): void {
-    const email: string = this.email.value;
-    const password: string = this.password.value;
+  displayNotification(notification: Notification): void {
 
-    this.tryLogin(email, password);
-  }
-
-  tryLogin(email: string, password: string): void {
-    this.authService.login(email, password).subscribe(
-      (onSuccess: boolean) => {
-        console.log('LOGIN OK!');
-      },
-      (error: any) => {
-        console.log('LOGIN FAILED!');
-        this.notificationService.error('Erreur', 'LOGIN FAILED!');
+    switch (notification.type) {
+      case NotificationType.Error: {
+        this.angular2NotificationsService.error(notification.title, notification.content);
+        break;
       }
-    );
+      case NotificationType.Sucess: {
+        this.angular2NotificationsService.success(notification.title, notification.content);
+        break;
+      }
+      case NotificationType.Warning: {
+        this.angular2NotificationsService.warn(notification.title, notification.content);
+        break;
+      }
+    }
   }
 
 }
