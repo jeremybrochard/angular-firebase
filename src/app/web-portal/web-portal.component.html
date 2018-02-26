@@ -1,3 +1,13 @@
-<p>
-  web-portal works!
-</p>
+<div fxLayout="row" class="web-portal-container">
+
+  <!-- Navigation menu -->
+  <div fxFlex="1 1 200px" class="navbar-container">
+    <app-navbar></app-navbar>
+  </div>
+
+  <!-- Page content -->
+  <div fxFlex="1 1 auto" class="page-container">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

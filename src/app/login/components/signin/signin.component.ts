@@ -5,6 +5,7 @@ import { NOTIFICATIONS_OPTIONS } from '../../../shared/notifications-options';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CustomNotificationsService } from '../../../core/providers/custom-notifications.service';
 import { ResourcesService } from '../../../core/providers/resources.service';
+import { Router } from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -37,7 +38,8 @@ export class SigninComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private notificationsService: CustomNotificationsService,
-    public resourcesService: ResourcesService
+    private resourcesService: ResourcesService,
+    private router: Router
   ) {
     this.matcher = new MyErrorStateMatcher();
   }
@@ -77,7 +79,11 @@ export class SigninComponent implements OnInit {
   tryLogin(email: string, password: string): void {
     this.authService.login(email, password).subscribe(
       (onSuccess: boolean) => {
-        console.log('LOGIN OK!');
+        // If login succeed, we redirect the user to the home page
+        if (onSuccess) {
+          this.router.navigate(['/home']);
+        }
+
       },
       (error: any) => {
         console.error('LOGIN FAILED!');

@@ -1,9 +1,43 @@
 {
-    "errors": {},
     "pages": {
         "signin": {
             "buttons": {
-                "signin": "Se connecter"
+                "signin": "SIGN IN",
+                "register": "Click here to create one"
+            },
+            "labels": {
+                "noAccount": "Don't have an account?"
+            },
+            "placeholders": {
+                "email": "E-mail *",
+                "password": "Password *"
+            },
+            "errors": {
+                "email": "Please enter a valid email address",
+                "emailRequired": "Email is required",
+                "passwordRequired": "Password is required"
+            }
+        },
+        "register": {
+            "buttons": {
+                "register": "CREATE ACCOUNT",
+                "signin": "Sign in here"
+            },
+            "labels": {
+                "hasAccount": "Already have an account?"
+            },
+            "placeholders": {
+                "name": "Name *",
+                "email": "E-mail *",
+                "password": "Password *",
+                "passwordConfirm": "Confirm your password *"
+            },
+            "errors": {
+                "email": "Please enter a valid email address",
+                "nameRequired": "Name is required",
+                "emailRequired": "Email is required",
+                "passwordRequired": "Password is required",
+                "passwordConfirmRequired": "Password confirmation is required"
             }
         }
     }

@@ -6,18 +6,40 @@ import 'rxjs/add/operator/delay';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Subscriber } from 'rxjs/Subscriber';
+import { User } from '@firebase/auth-types';
 
 @Injectable()
 export class AuthService {
 
-  isLoggedIn: boolean; // True if the user is logged in
   redirectUrl: string; // Store the URL so we can redirect after logging in
+  
+  /**
+   * Return current user or null
+   */
+  get currentUser(): Observable<User | null> {
+    return new Observable<User>(
+      (observer: Subscriber<User>) => {
+        this.angularFireAuth.auth.onAuthStateChanged(
+          (user: User) => {
+            observer.next(user);
+            observer.complete();
+          },
+          (error) => {
+            observer.error(error);
+            observer.complete();
+          },
+          () => { 
+            // TO DO: why this code is never reached?
+            observer.complete();
+          }
+        );
+      }
+    );
+  }
 
   constructor(
     private angularFireAuth: AngularFireAuth
-  ) {
-    this.isLoggedIn = false;
-  }
+  ) { }
 
   /**
    * Sign in user with email and password
@@ -31,7 +53,6 @@ export class AuthService {
           .then( // Handle sucess callback
             (response: any) => {
               console.log('Connection succeeded!', response);
-              this.isLoggedIn = true;
               observer.next(true);
               observer.complete();
             }
@@ -40,6 +61,7 @@ export class AuthService {
             (error: any) => {
               console.error('An error occured during authentication', error);
               observer.error(error);
+              observer.complete();
             }
           );
       }
@@ -66,6 +88,7 @@ export class AuthService {
             (error: any) => {
               console.error('An error occured during user creation', error);
               observer.error(error);
+              observer.complete();
             }
           );
       }
@@ -75,8 +98,25 @@ export class AuthService {
   /**
    * Log out current user
    */
-  logout(): void {
-    this.isLoggedIn = false;
+  logout(): Observable<boolean> {
+    return new Observable<boolean>(
+      (observer: Subscriber<boolean>) => {
+        this.angularFireAuth.auth.signOut()
+          .then( // Handle sucess callback
+            (response: any) => {
+              console.log('User successfully disconnected!', response);
+              observer.next(true);
+              observer.complete();
+            }
+          )
+          .catch( // Handle error callback
+            (error: any) => {
+              console.error('An error occured during user logout', error);
+              observer.error(error);
+              observer.complete();
+            }
+          );
+      }
+    );
   }
-
 }

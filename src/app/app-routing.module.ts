@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 import { LoginModule } from './login/login.module';
 import { WebPortalModule } from './web-portal/web-portal.module';
@@ -19,7 +18,8 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    component: PageNotFoundComponent
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 

@@ -1,0 +1,30 @@
+<div fxLayout="column" class="navbar">
+
+  <!-- Logo -->
+  <div fxFlex="8%" fxLayout="row" fxLayoutAlign="center center" class="logo">
+    <img id="navbar-logo" src="assets/logo.png" alt="site logo" (click)="goToHomePage()">
+  </div>
+
+  <!-- Menu -->
+  <div fxFlex="92%" fxLayout="column" class="menu">
+
+    <!-- Menu items -->
+    <div fxFlex="80%">
+      <mat-list role="navigation">
+        <a mat-list-item routerLink="/">Home</a>
+        <a mat-list-item routerLink="/profile">Profile</a>
+        <a mat-list-item routerLink="/lists">Lists</a>
+      </mat-list>
+    </div>
+
+    <!-- User account & sign out button -->
+    <div fxFlex="20%" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="10px">
+      <div *ngIf="currentUser">
+        <div>{{ currentUser.displayName }}</div>
+      </div>
+      <button mat-raised-button color="primary" (click)="logout()">LOGOUT</button>
+    </div>
+
+  </div>
+
+</div>

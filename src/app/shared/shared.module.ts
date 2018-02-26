@@ -5,7 +5,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { 
   MatButtonModule,
-  MatInputModule
+  MatInputModule,
+  MatListModule
 } from '@angular/material';
 
 
@@ -13,7 +14,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 const MATERIAL_COMPONENTS = [
   MatButtonModule,
-  MatInputModule
+  MatInputModule,
+  MatListModule
 ]
 
 @NgModule({
