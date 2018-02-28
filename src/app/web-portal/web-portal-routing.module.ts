@@ -5,6 +5,8 @@ import { AuthGuardService } from '../core/providers/auth-guard.service';
 
 import { WebPortalComponent } from './web-portal.component';
 import { HomeComponent } from './components/home/home.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ListsComponent } from './components/lists/lists.component';
 
 const appRoutes: Routes = [
   {
@@ -15,6 +17,16 @@ const appRoutes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'lists',
+        component: ListsComponent,
         canActivate: [AuthGuardService]
       },
       {

@@ -14,6 +14,7 @@ import { CustomNotificationsService } from './providers/custom-notifications.ser
 // Third-party modules
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ExceptionService } from './providers/exception.service';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AuthService,
     AuthGuardService,
     MixinService,
-    CustomNotificationsService
+    CustomNotificationsService,
+    ExceptionService
   ]
 })
 export class CoreModule { }

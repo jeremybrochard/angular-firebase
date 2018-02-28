@@ -1,4 +1,4 @@
-# AngularFireTest
+# Angular-Firebase
 
 Simple Angular app with Firebase integration
 

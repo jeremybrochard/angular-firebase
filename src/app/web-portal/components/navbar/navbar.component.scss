@@ -1,3 +1,5 @@
+@import '../../../../sass/app.scss';
+
 .navbar {
     height: 100%;
 }
@@ -14,4 +16,10 @@
 .menu {
     background-color: #CFD8DC;
     height: 100%
+}
+
+.active-link {
+    color: mat-color($default-primary, default) !important;
+    font-size: larger !important;
+    font-weight: bolder !important;
 }

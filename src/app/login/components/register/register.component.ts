@@ -5,13 +5,8 @@ import { NOTIFICATIONS_OPTIONS } from '../../../shared/notifications-options';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CustomNotificationsService } from '../../../core/providers/custom-notifications.service';
 import { ResourcesService } from '../../../core/providers/resources.service';
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+import { CustomValidators } from '../../../core/custom-validators';
+import { StandardErrorStateMatcher, GroupErrorStateMatcher } from '../../../core/custom-error-matchers';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +18,8 @@ export class RegisterComponent implements OnInit {
   rsc: any;
   registerForm: FormGroup;
   notificationOptions: any;
-  matcher: MyErrorStateMatcher;
+  standardMatcher: StandardErrorStateMatcher;
+  groupMatcher: GroupErrorStateMatcher;
 
   get name(): FormControl {
     return this.registerForm.get('name') as FormControl;
@@ -34,11 +30,11 @@ export class RegisterComponent implements OnInit {
   };
 
   get password(): FormControl {
-    return this.registerForm.get('password') as FormControl;
+    return this.registerForm.get('matchingPassword').get('password') as FormControl;
   };
 
   get passwordConfirm(): FormControl {
-    return this.registerForm.get('passwordConfirm') as FormControl;
+    return this.registerForm.get('matchingPassword').get('passwordConfirm') as FormControl;
   };
 
   constructor(
@@ -47,7 +43,8 @@ export class RegisterComponent implements OnInit {
     private notificationsService: CustomNotificationsService,
     private resourcesService: ResourcesService
   ) {
-    this.matcher = new MyErrorStateMatcher();
+    this.standardMatcher = new StandardErrorStateMatcher();
+    this.groupMatcher = new GroupErrorStateMatcher();
   }
 
   ngOnInit(): void {
@@ -67,14 +64,17 @@ export class RegisterComponent implements OnInit {
    */
   createRegisterForm(): void {
     this.registerForm = this.formBuilder.group({
-      name: this.formBuilder.control('', Validators.required),
-      email: this.formBuilder.control('', [Validators.required, Validators.email]),
-      password: this.formBuilder.control('', Validators.required),
-      passwordConfirm: this.formBuilder.control('', Validators.required)
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      matchingPassword: this.formBuilder.group({
+        password: ['', Validators.required],
+        passwordConfirm: ['', Validators.required]
+      }, { validator: CustomValidators.areEquals })
     });
   }
 
   onFormSubmit(): void {
+    console.log(this.registerForm.get('matchingPassword'));
     if (this.registerForm.valid) {
 
       const email: string = this.email.value;
