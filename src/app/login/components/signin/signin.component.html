@@ -34,8 +34,8 @@
     </form>
 
     <!-- Form footer -->
-    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="8px">
-      <div>{{ rsc.labels.noAccount }}</div>
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="8px" class="signin-footer">
+      <p>{{ rsc.labels.noAccount }}</p>
       <a [routerLink]="['/login/register']" >{{ rsc.buttons.register }}</a>
     </div>
 
