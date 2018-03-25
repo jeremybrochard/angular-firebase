@@ -1,20 +1,28 @@
+// Core modules
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { AuthGuardService } from './providers/auth-guard.service';
-import { AuthService } from './providers/auth.service';
-import { environment } from '../../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { ResourcesService } from "./providers/resources.service";
-import { MixinService } from './providers/mixin.service';
-import { ResourcesFactory } from './factories/resources.factory';
-import { CustomNotificationsService } from './providers/custom-notifications.service';
 
 // Third-party modules
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AgmCoreModule } from '@agm/core';
+
+// Factories
+import { ResourcesFactory } from './factories/resources.factory';
+
+// Providers singletons
+import { AuthGuardService } from './providers/auth-guard.service';
+import { AuthService } from './providers/auth.service';
+import { CustomNotificationsService } from './providers/custom-notifications.service';
 import { ExceptionService } from './providers/exception.service';
+import { MixinService } from './providers/mixin.service';
+import { ResourcesService } from "./providers/resources.service";
+
+// Load app environment
+import { environment } from '../../environments/environment';
 
 @NgModule({
   imports: [
@@ -22,8 +30,9 @@ import { ExceptionService } from './providers/exception.service';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AgmCoreModule.forRoot(environment.googleMapConfig)
   ],
   providers: [
     ResourcesService, {

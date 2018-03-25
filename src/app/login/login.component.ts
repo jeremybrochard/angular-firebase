@@ -13,7 +13,7 @@ import { NotificationType } from '../core/enums/notification-type';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  private notificationOptions: any;
+  notificationOptions: any;
   private subscription: Subscription;
 
   constructor(

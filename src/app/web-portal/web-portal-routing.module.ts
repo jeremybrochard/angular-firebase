@@ -4,9 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from '../core/providers/auth-guard.service';
 
 import { WebPortalComponent } from './web-portal.component';
-import { HomeComponent } from './components/home/home.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { ListsComponent } from './components/lists/lists.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ListsComponent } from './pages/lists/lists.component';
 
 const appRoutes: Routes = [
   {

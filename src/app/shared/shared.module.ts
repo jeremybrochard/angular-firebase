@@ -8,9 +8,9 @@ import {
   MatInputModule,
   MatListModule
 } from '@angular/material';
+import { AgmCoreModule } from '@agm/core';
 
-
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const MATERIAL_COMPONENTS = [
   MatButtonModule,
@@ -24,7 +24,8 @@ const MATERIAL_COMPONENTS = [
     ReactiveFormsModule,
     FlexLayoutModule,
     SimpleNotificationsModule.forRoot(),
-    MATERIAL_COMPONENTS
+    MATERIAL_COMPONENTS,
+    AgmCoreModule
   ],
   declarations: [
     PageNotFoundComponent
@@ -35,7 +36,8 @@ const MATERIAL_COMPONENTS = [
     FlexLayoutModule,
     PageNotFoundComponent,
     SimpleNotificationsModule,
-    MATERIAL_COMPONENTS
+    MATERIAL_COMPONENTS,
+    AgmCoreModule
   ]
 })
 export class SharedModule { }

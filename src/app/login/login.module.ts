@@ -4,8 +4,8 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginRoutingModule } from './login-routing.module';
 
 import { LoginComponent } from './login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { SigninComponent } from './components/signin/signin.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { SigninComponent } from './pages/signin/signin.component';
 
 @NgModule({
   imports: [
