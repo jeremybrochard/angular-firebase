@@ -1,4 +1,3 @@
-import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -19,8 +18,7 @@ const MATERIAL_COMPONENTS = [
     ReactiveFormsModule,
     FlexLayoutModule,
     SimpleNotificationsModule.forRoot(),
-    MATERIAL_COMPONENTS,
-    AgmCoreModule
+    MATERIAL_COMPONENTS
   ],
   declarations: [
     PageNotFoundComponent
@@ -31,8 +29,7 @@ const MATERIAL_COMPONENTS = [
     FlexLayoutModule,
     PageNotFoundComponent,
     SimpleNotificationsModule,
-    MATERIAL_COMPONENTS,
-    AgmCoreModule
+    MATERIAL_COMPONENTS
   ]
 })
 export class SharedModule { }
