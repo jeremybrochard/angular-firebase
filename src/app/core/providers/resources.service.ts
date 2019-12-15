@@ -6,7 +6,9 @@ const RESOURCES_FILE_PATH = 'resources/resources.json';
 /**
  * Service to handle global application resources
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ResourcesService {
 
     rsc: any;

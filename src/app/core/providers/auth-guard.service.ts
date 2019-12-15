@@ -4,7 +4,9 @@ import { User } from '@firebase/auth-types';
 import { Observable, Subscriber } from 'rxjs';
 import { AuthService } from './auth.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthGuardService implements CanActivate, CanLoad {
 
   constructor(

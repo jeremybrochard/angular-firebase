@@ -3,7 +3,9 @@ import { Subject, Observable } from 'rxjs';
 import { Notification } from '../models/notification';
 import { NotificationType } from '../enums/notification-type';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CustomNotificationsService {
 
   private _notificationsStream: Subject<Notification>;

@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Third-party modules
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 // Factories
 import { ResourcesFactory } from './factories/resources.factory';
@@ -31,19 +32,15 @@ import { environment } from '../../environments/environment';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [
-    ResourcesService, {
+    {
       provide: APP_INITIALIZER,
       useFactory: ResourcesFactory,
       deps: [ResourcesService],
       multi: true
-    },
-    AuthService,
-    AuthGuardService,
-    MixinService,
-    CustomNotificationsService,
-    ExceptionService
+    }
   ]
 })
 export class CoreModule { }

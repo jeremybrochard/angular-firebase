@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Error } from '../models/error';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ExceptionService {
 
   constructor() { }

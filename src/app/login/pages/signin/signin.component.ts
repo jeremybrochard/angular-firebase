@@ -68,7 +68,6 @@ export class SigninComponent implements OnInit {
 
   onFormSubmit(): void {
     if (this.loginForm.valid) {
-      
       const email: string = this.email.value;
       const password: string = this.password.value;
 

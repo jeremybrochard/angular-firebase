@@ -3,7 +3,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '@firebase/auth-types';
 import { Observable, Subscriber } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
 
   redirectUrl: string; // Store the URL so we can redirect after logging in
