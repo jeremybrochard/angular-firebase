@@ -14,7 +14,7 @@ export class CustomNotificationsService {
 
   /**
    * Send a new notification on the notifications stream
-   * @param notification 
+   * @param notification
    */
   send(notification: Notification): void {
     if (notification) {

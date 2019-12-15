@@ -1,7 +1,6 @@
 import { NotificationType } from '../enums/notification-type';
 
 export class Notification {
-    
     private _type: NotificationType;
     private _title: string;
     private _content: string;

@@ -1,8 +1,7 @@
-import { Component, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Injectable } from '@angular/core';
 
-const RESOURCES_FILE_PATH: string = 'resources/resources.json';
+const RESOURCES_FILE_PATH = 'resources/resources.json';
 
 /**
  * Service to handle global application resources

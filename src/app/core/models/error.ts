@@ -1,5 +1,4 @@
 export class Error {
-    
     private _code: number | string;
     private _message: string;
 

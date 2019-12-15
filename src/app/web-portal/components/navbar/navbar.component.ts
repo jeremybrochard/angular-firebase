@@ -11,7 +11,7 @@ import { CustomNotificationsService } from '../../../core/providers/custom-notif
 })
 export class NavbarComponent implements OnInit {
 
-  currentUser: User
+  currentUser: User;
 
   constructor(
     private authService: AuthService,
