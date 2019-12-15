@@ -9,11 +9,11 @@ import { AuthGuardService } from './core/providers/auth-guard.service';
 const appRoutes: Routes = [
   {
     path: 'login',
-    loadChildren: './login/login.module#LoginModule',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
   },
   {
     path: '',
-    loadChildren: './web-portal/web-portal.module#WebPortalModule',
+    loadChildren: () => import('./web-portal/web-portal.module').then(m => m.WebPortalModule),
     canLoad: [AuthGuardService]
   },
   {

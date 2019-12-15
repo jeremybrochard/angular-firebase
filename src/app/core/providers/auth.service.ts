@@ -1,18 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
-import { Subscriber } from 'rxjs/Subscriber';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '@firebase/auth-types';
+import { Observable } from 'rxjs/Observable';
+import { Subscriber } from 'rxjs/Subscriber';
 
 @Injectable()
 export class AuthService {
 
   redirectUrl: string; // Store the URL so we can redirect after logging in
-  
+
   /**
    * Return current user or null
    */
@@ -28,7 +24,7 @@ export class AuthService {
             observer.error(error);
             observer.complete();
           },
-          () => { 
+          () => {
             // TO DO: why this code is never reached?
             observer.complete();
           }

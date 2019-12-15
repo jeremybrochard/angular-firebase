@@ -6,9 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 // Third-party modules
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AgmCoreModule } from '@agm/core';
+import { AngularFireModule,  } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // Factories
 import { ResourcesFactory } from './factories/resources.factory';
@@ -19,7 +19,7 @@ import { AuthService } from './providers/auth.service';
 import { CustomNotificationsService } from './providers/custom-notifications.service';
 import { ExceptionService } from './providers/exception.service';
 import { MixinService } from './providers/mixin.service';
-import { ResourcesService } from "./providers/resources.service";
+import { ResourcesService } from './providers/resources.service';
 
 // Load app environment
 import { environment } from '../../environments/environment';
