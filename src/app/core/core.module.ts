@@ -6,8 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 // Third-party modules
-import { AgmCoreModule } from '@agm/core';
-import { AngularFireModule,  } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // Factories
@@ -32,7 +31,6 @@ import { environment } from '../../environments/environment';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AgmCoreModule.forRoot(environment.googleMapConfig)
   ],
   providers: [
     ResourcesService, {

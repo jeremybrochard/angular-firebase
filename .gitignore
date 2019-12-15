@@ -2,7 +2,6 @@
 
 # sensitive data (API keys...)
 /src/environments/firebase-config.ts
-/src/environments/google-maps-config.ts
 
 # compiled output
 /dist

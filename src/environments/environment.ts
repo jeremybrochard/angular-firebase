@@ -4,7 +4,6 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 import { FIREBASE_CONFIG } from './firebase-config';
-import { GOOGLE_MAP_CONFIG } from './google-maps-config';
 
 export const environment = {
   production: false,
@@ -15,8 +14,5 @@ export const environment = {
     projectId: FIREBASE_CONFIG.projectId,
     storageBucket: FIREBASE_CONFIG.storageBucket,
     messagingSenderId: FIREBASE_CONFIG.messagingSenderId
-  },
-  googleMapConfig: {
-    apiKey: GOOGLE_MAP_CONFIG.apiKey
   }
 };
