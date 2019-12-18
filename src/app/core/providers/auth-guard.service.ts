@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot } from '@angular/router';
 import { User } from '@firebase/auth-types';
 import { Observable, Subscriber } from 'rxjs';
@@ -11,7 +11,8 @@ export class AuthGuardService implements CanActivate, CanLoad {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private zone: NgZone
   ) { }
 
   canLoad(route: Route): boolean | Observable<boolean> | Promise<boolean> {
@@ -27,18 +28,24 @@ export class AuthGuardService implements CanActivate, CanLoad {
       (observer: Subscriber<boolean>) => {
         this.authService.currentUser.subscribe(
           (user: User) => {
-            if (user) {
-              observer.next(true);
-            } else {
-              this.router.navigate(['/login']);
-              observer.next(false);
-            }
+            this.zone.run(() => {
+              if (user) {
+                observer.next(true);
+              } else {
+                this.router.navigate(['/login']);
+                observer.next(false);
+              }
+            });
           },
           (error: any) => {
-            observer.error(error);
+            this.zone.run(() => {
+              observer.error(error);
+            });
           },
           () => {
-            observer.complete();
+            this.zone.run(() => {
+              observer.complete();
+            });
           }
         );
       });
