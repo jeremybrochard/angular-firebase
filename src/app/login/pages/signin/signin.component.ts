@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../core/providers/auth.service';
-import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { NOTIFICATIONS_OPTIONS } from '../../../shared/notifications-options';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { CustomNotificationsService } from '../../../core/providers/custom-notifications.service';
-import { ResourcesService } from '../../../core/providers/resources.service';
 import { Router } from '@angular/router';
+import { AuthService } from '~core/providers/auth.service';
+import { CustomNotificationsService } from '~core/providers/custom-notifications.service';
+import { ResourcesService } from '~core/providers/resources.service';
+import { NOTIFICATIONS_OPTIONS } from '~shared/notifications-options';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {

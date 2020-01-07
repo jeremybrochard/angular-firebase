@@ -18,6 +18,10 @@
       "dom"
     ],
     "module": "esnext",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "paths": {
+      "~core/*": ["./src/app/core/*"],
+      "~shared/*": ["./src/app/shared/*"]
+    },
   }
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../core/providers/auth.service';
 import { Router } from '@angular/router';
 import { User } from 'firebase/app';
-import { CustomNotificationsService } from '../../../core/providers/custom-notifications.service';
+import { AuthService } from '~core/providers/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,8 +14,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router,
-    private customNotificationsService: CustomNotificationsService
+    private router: Router
   ) { }
 
   ngOnInit(): void {

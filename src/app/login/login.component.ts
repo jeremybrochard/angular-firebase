@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NOTIFICATIONS_OPTIONS } from '../shared/notifications-options';
 import { NotificationsService } from 'angular2-notifications';
-import { CustomNotificationsService } from '../core/providers/custom-notifications.service';
 import { Subscription } from 'rxjs';
-import { Notification } from '../core/models/notification';
-import { NotificationType } from '../core/enums/notification-type';
+import { CustomNotificationsService } from '~core/providers/custom-notifications.service';
+import { Notification } from '~core/models/notification';
+import { NOTIFICATIONS_OPTIONS } from '~shared/notifications-options';
+import { NotificationType } from '~core/enums/notification-type';
 
 @Component({
   selector: 'app-login',

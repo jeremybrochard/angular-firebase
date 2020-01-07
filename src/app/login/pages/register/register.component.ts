@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../core/providers/auth.service';
-import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { NOTIFICATIONS_OPTIONS } from '../../../shared/notifications-options';
-import { ErrorStateMatcher } from '@angular/material/core';
-import { CustomNotificationsService } from '../../../core/providers/custom-notifications.service';
-import { ResourcesService } from '../../../core/providers/resources.service';
-import { CustomValidators } from '../../../core/custom-validators';
-import { StandardErrorStateMatcher, GroupErrorStateMatcher } from '../../../core/custom-error-matchers';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { GroupErrorStateMatcher, StandardErrorStateMatcher } from '~core/custom-error-matchers';
+import { CustomValidators } from '~core/custom-validators';
+import { AuthService } from '~core/providers/auth.service';
+import { CustomNotificationsService } from '~core/providers/custom-notifications.service';
+import { ResourcesService } from '~core/providers/resources.service';
+import { NOTIFICATIONS_OPTIONS } from '~shared/notifications-options';
 
 @Component({
   selector: 'app-register',
