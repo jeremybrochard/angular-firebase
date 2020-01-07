@@ -7,6 +7,9 @@ import { WebPortalComponent } from './web-portal.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
+import { ArticleComponent } from './components/article/article.component';
+
+import { ArticlesService } from './providers/articles.service';
 
 @NgModule({
   imports: [
@@ -17,7 +20,11 @@ import { ArticlesComponent } from './pages/articles/articles.component';
     WebPortalComponent,
     HomeComponent,
     NavbarComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    ArticleComponent
+  ],
+  providers: [
+    ArticlesService
   ]
 })
 export class WebPortalModule { }

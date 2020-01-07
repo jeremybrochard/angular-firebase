@@ -6,15 +6,15 @@
 
 .logo {
     padding: 10px;
-    background-color: inherit;
-    
+    background-color: mat-color($default-primary, default) !important;;
+
     #navbar-logo {
         width: 74%;
     }
 }
 
 .menu {
-    background-color: #CFD8DC;
+    background-color: #f2f2f2;
     height: 100%
 }
 

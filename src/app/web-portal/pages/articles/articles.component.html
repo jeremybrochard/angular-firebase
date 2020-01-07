@@ -1,1 +1,6 @@
-<p>articles works!</p>
+<div>
+  <h1>Liste d'articles : </h1>
+  <div fxLayout="column" fxLayoutGap="20px">
+    <app-article *ngFor="let article of (articleList | async)" [article]="article"></app-article>
+  </div>
+</div>
