@@ -19,25 +19,24 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private notificationsService: CustomNotificationsService,
     private angular2NotificationsService: NotificationsService
-  ) {
-    this.subscription = new Subscription();
-    this.subscription.add(
-      this.notificationsService.on().subscribe(
-        (notification: Notification) => {
-          this.displayNotification(notification);
-        }
-      ));
-  }
+  ) { }
 
-  ngOnInit(): void {
-    // Get notifications options
+  ngOnInit() {
     this.notificationOptions = NOTIFICATIONS_OPTIONS;
+
+    // TODO: Move to our custom notification service?
+    this.subscription = this.notificationsService.on().subscribe(
+      (notification: Notification) => {
+        this.displayNotification(notification);
+      }
+    );
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
+  // TODO: Move to our custom notification service?
   displayNotification(notification: Notification): void {
 
     switch (notification.type) {

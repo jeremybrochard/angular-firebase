@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     // Get the current user
     this.authService.currentUser.subscribe(
       (user: User) => {
@@ -31,11 +31,11 @@ export class NavbarComponent implements OnInit {
     );
   }
 
-  goToHomePage(): void {
+  goToHomePage() {
     this.router.navigate(['/']);
   }
 
-  logout(): void {
+  logout() {
     console.log('logging out...');
     this.authService.logout().subscribe(
       (isLogoutSuccess: boolean) => {
