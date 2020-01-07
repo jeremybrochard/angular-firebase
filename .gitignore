@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # sensitive data (API keys...)
-/src/environments/firebase-config.ts
+/src/firebase-config.ts
 
 # compiled output
 /dist

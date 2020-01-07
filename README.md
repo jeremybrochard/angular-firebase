@@ -30,7 +30,7 @@ npm install
 
 - Copy/paste your firebase configurations in the project
 
-  - Go to the folder *src/environments*
+  - Go to the folder *src*
 
   - Create a new file called *firebase-config.ts*
 
