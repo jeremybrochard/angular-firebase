@@ -1,4 +1,4 @@
-import { NotificationType } from '../enums/notification-type';
+import { NotificationType } from 'angular2-notifications';
 
 export class Notification {
     private _type: NotificationType;

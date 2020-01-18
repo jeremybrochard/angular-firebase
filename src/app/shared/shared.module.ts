@@ -4,7 +4,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule, MatListModule, MatCardModule, MatProgressSpinnerModule, MatFormFieldModule } from '@angular/material';
 import { SimpleNotificationsModule } from 'angular2-notifications';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const MATERIAL_COMPONENTS = [
   MatButtonModule,
@@ -23,14 +22,11 @@ const MATERIAL_COMPONENTS = [
     SimpleNotificationsModule.forRoot(),
     MATERIAL_COMPONENTS
   ],
-  declarations: [
-    PageNotFoundComponent
-  ],
+  declarations: [],
   exports: [
     CommonModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    PageNotFoundComponent,
     SimpleNotificationsModule,
     MATERIAL_COMPONENTS
   ]

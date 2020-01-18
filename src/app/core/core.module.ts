@@ -14,11 +14,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ResourcesFactory } from './factories/resources.factory';
 
 // Providers singletons
-import { AuthGuardService } from './providers/auth-guard.service';
-import { AuthService } from './providers/auth.service';
-import { CustomNotificationsService } from './providers/custom-notifications.service';
-import { ExceptionService } from './providers/exception.service';
-import { MixinService } from './providers/mixin.service';
 import { ResourcesService } from './providers/resources.service';
 
 // Load app environment

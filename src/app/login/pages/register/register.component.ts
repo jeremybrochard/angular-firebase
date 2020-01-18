@@ -3,9 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { GroupErrorStateMatcher, StandardErrorStateMatcher } from '~core/custom-error-matchers';
 import { CustomValidators } from '~core/custom-validators';
 import { AuthService } from '~core/providers/auth.service';
-import { CustomNotificationsService } from '~core/providers/custom-notifications.service';
 import { ResourcesService } from '~core/providers/resources.service';
-import { NOTIFICATIONS_OPTIONS } from '~shared/notifications-options';
+import { AlertService } from '../../../core/providers/alert.service';
 
 @Component({
   selector: 'app-register',
@@ -16,30 +15,29 @@ export class RegisterComponent implements OnInit {
 
   rsc: any;
   registerForm: FormGroup;
-  notificationOptions: any;
   standardMatcher: StandardErrorStateMatcher;
   groupMatcher: GroupErrorStateMatcher;
 
   get name(): FormControl {
     return this.registerForm.get('name') as FormControl;
-  };
+  }
 
   get email(): FormControl {
     return this.registerForm.get('email') as FormControl;
-  };
+  }
 
   get password(): FormControl {
     return this.registerForm.get('matchingPassword').get('password') as FormControl;
-  };
+  }
 
   get passwordConfirm(): FormControl {
     return this.registerForm.get('matchingPassword').get('passwordConfirm') as FormControl;
-  };
+  }
 
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private notificationsService: CustomNotificationsService,
+    private alertService: AlertService,
     private resourcesService: ResourcesService
   ) {
     this.standardMatcher = new StandardErrorStateMatcher();
@@ -47,12 +45,8 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     // Init page resources (static text...)
     this.rsc = this.resourcesService.get().pages.register;
-
-    // Get notifications options
-    this.notificationOptions = NOTIFICATIONS_OPTIONS;
 
     // Init login form
     this.createRegisterForm();
@@ -89,8 +83,7 @@ export class RegisterComponent implements OnInit {
         console.log('REGISTRATION OK!');
       },
       (error: any) => {
-        console.error('REGISTRATION FAILED!');
-        this.notificationsService.sendError('REGISTRATION FAILED!');
+        this.alertService.error('REGISTRATION FAILED!');
       }
     );
   }

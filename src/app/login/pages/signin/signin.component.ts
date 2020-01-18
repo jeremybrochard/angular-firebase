@@ -3,9 +3,8 @@ import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Valida
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { AuthService } from '~core/providers/auth.service';
-import { CustomNotificationsService } from '~core/providers/custom-notifications.service';
 import { ResourcesService } from '~core/providers/resources.service';
-import { NOTIFICATIONS_OPTIONS } from '~shared/notifications-options';
+import { AlertService } from '~core/providers/alert.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -23,21 +22,20 @@ export class SigninComponent implements OnInit {
 
   rsc: any;
   loginForm: FormGroup;
-  notificationOptions: any;
   matcher: MyErrorStateMatcher;
 
   get email(): FormControl {
     return this.loginForm.get('email') as FormControl;
-  };
+  }
 
   get password(): FormControl {
     return this.loginForm.get('password') as FormControl;
-  };
+  }
 
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private notificationsService: CustomNotificationsService,
+    private alertService: AlertService,
     private resourcesService: ResourcesService,
     private router: Router
   ) {
@@ -45,12 +43,8 @@ export class SigninComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     // Init page resources (static text...)
     this.rsc = this.resourcesService.get().pages.signin;
-
-    // Get notifications options
-    this.notificationOptions = NOTIFICATIONS_OPTIONS;
 
     // Init login form
     this.createLoginForm();
@@ -78,15 +72,14 @@ export class SigninComponent implements OnInit {
   tryLogin(email: string, password: string): void {
     this.authService.login(email, password).subscribe(
       (onSuccess: boolean) => {
-        // If login succeed, we redirect the user to the home page
         if (onSuccess) {
+          // If login succeed, we redirect the user to the home page
           this.router.navigate(['/home']);
         }
 
       },
       (error: any) => {
-        console.error('LOGIN FAILED!');
-        this.notificationsService.sendError('LOGIN FAILED!');
+        this.alertService.error('LOGIN FAILED!');
       }
     );
   }
