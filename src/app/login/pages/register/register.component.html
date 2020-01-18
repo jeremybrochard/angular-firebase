@@ -13,50 +13,50 @@
       <div fxLayout="column" fxLayoutGap="22px">
 
         <mat-form-field>
-          <input matInput [placeholder]="rsc.placeholders.name" formControlName="name" type="text" [errorStateMatcher]="standardMatcher">
-          <mat-error *ngIf="name.hasError('required')">
-            {{ rsc.errors.nameRequired }}
+          <input matInput placeholder="{{ 'pages.register.placeholders.name' | translate }}" formControlName="name" type="text" [errorStateMatcher]="standardMatcher">
+          <mat-error *ngIf="name.hasError('required')" translate>
+            pages.register.errors.nameRequired
           </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput [placeholder]="rsc.placeholders.email" formControlName="email" type="email" [errorStateMatcher]="standardMatcher">
-          <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
-            {{ rsc.errors.email }}
+          <input matInput placeholder="{{ 'pages.register.placeholders.email' | translate }}" formControlName="email" type="email" [errorStateMatcher]="standardMatcher">
+          <mat-error *ngIf="email.hasError('email') && !email.hasError('required')" translate>
+            pages.register.errors.email
           </mat-error>
-          <mat-error *ngIf="email.hasError('required')">
-            {{ rsc.errors.emailRequired }}
+          <mat-error *ngIf="email.hasError('required')" translate>
+            pages.register.errors.emailRequired
           </mat-error>
         </mat-form-field>
 
         <div formGroupName="matchingPassword" fxLayout="column" fxLayoutGap="22px">
           <mat-form-field>
-            <input matInput [placeholder]="rsc.placeholders.password" formControlName="password" type="password" [errorStateMatcher]="standardMatcher">
-            <mat-error *ngIf="password.hasError('required')">
-              {{ rsc.errors.passwordRequired }}
+            <input matInput placeholder="{{ 'pages.register.placeholders.password' | translate }}" formControlName="password" type="password" [errorStateMatcher]="standardMatcher">
+            <mat-error *ngIf="password.hasError('required')" translate>
+              pages.register.errors.passwordRequired
             </mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput [placeholder]="rsc.placeholders.passwordConfirm" formControlName="passwordConfirm" type="password" [errorStateMatcher]="groupMatcher">
-            <mat-error *ngIf="passwordConfirm.hasError('required')">
-              {{ rsc.errors.passwordConfirmRequired }}
+            <input matInput placeholder="{{ 'pages.register.placeholders.passwordConfirm' | translate }}" formControlName="passwordConfirm" type="password" [errorStateMatcher]="groupMatcher">
+            <mat-error *ngIf="passwordConfirm.hasError('required')" translate>
+              pages.register.errors.passwordConfirmRequired
             </mat-error>
-            <mat-error *ngIf="registerForm.get('matchingPassword').hasError('areEquals')">
-              {{ rsc.errors.passwordsnotEquals }}
+            <mat-error *ngIf="registerForm.get('matchingPassword').hasError('areEquals')" translate>
+              pages.register.errors.passwordsnotEquals
             </mat-error>
           </mat-form-field>
 
         </div>
 
-        <button mat-raised-button color="primary">{{ rsc.buttons.register }}</button>
+        <button mat-raised-button color="primary">{{ 'pages.register.buttons.register' | translate }}</button>
       </div>
     </form>
 
     <!-- Form footer -->
     <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="8px" class="register-footer">
-      <div>{{ rsc.labels.hasAccount }}</div>
-      <a [routerLink]="['/login/signin']">{{ rsc.buttons.signin }}</a>
+      <div translate>pages.register.labels.hasAccount</div>
+      <a [routerLink]="['/login/signin']">{{ 'pages.register.buttons.signin' | translate}}</a>
     </div>
 
   </div>

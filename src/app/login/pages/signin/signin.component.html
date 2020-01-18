@@ -13,30 +13,30 @@
       <div fxLayout="column" fxLayoutGap="22px">
 
         <mat-form-field>
-          <input matInput [placeholder]="rsc.placeholders.email" formControlName="email" type="email" [errorStateMatcher]="matcher">
-          <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
-            {{ rsc.errors.email }}
+          <input matInput placeholder="{{ 'pages.signin.placeholders.email' | translate }}" formControlName="email" type="email" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="email.hasError('email') && !email.hasError('required')" translate>
+            pages.signin.errors.email
           </mat-error>
-          <mat-error *ngIf="email.hasError('required')">
-            {{ rsc.errors.emailRequired }}
+          <mat-error *ngIf="email.hasError('required')" translate>
+            pages.signin.errors.emailRequired
           </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput [placeholder]="rsc.placeholders.password" formControlName="password" type="password" [errorStateMatcher]="matcher">
-          <mat-error *ngIf="password.hasError('required')">
-            {{ rsc.errors.passwordRequired }}
+          <input matInput placeholder="{{ 'pages.signin.placeholders.password' | translate }}" formControlName="password" type="password" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="password.hasError('required')" translate>
+            pages.signin.errors.passwordRequired
           </mat-error>
         </mat-form-field>
 
-        <button mat-raised-button color="primary">{{ rsc.buttons.signin }}</button>
+        <button mat-raised-button color="primary">{{ 'pages.signin.buttons.signin' | translate}}</button>
       </div>
     </form>
 
     <!-- Form footer -->
     <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="8px" class="signin-footer">
-      <p>{{ rsc.labels.noAccount }}</p>
-      <a [routerLink]="['/login/register']" >{{ rsc.buttons.register }}</a>
+      <p translate>pages.signin.labels.noAccount</p>
+      <a [routerLink]="['/login/register']" translate>pages.signin.buttons.register</a>
     </div>
 
   </div>
