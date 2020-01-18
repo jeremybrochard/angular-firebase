@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Valida
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { AuthService } from '~core/providers/auth.service';
-import { ResourcesService } from '~core/providers/resources.service';
 import { AlertService } from '~core/providers/alert.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -20,7 +19,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SigninComponent implements OnInit {
 
-  rsc: any;
   loginForm: FormGroup;
   matcher: MyErrorStateMatcher;
 
@@ -36,16 +34,12 @@ export class SigninComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private alertService: AlertService,
-    private resourcesService: ResourcesService,
     private router: Router
   ) {
     this.matcher = new MyErrorStateMatcher();
   }
 
-  ngOnInit(): void {
-    // Init page resources (static text...)
-    this.rsc = this.resourcesService.get().pages.signin;
-
+  ngOnInit() {
     // Init login form
     this.createLoginForm();
   }
@@ -53,14 +47,14 @@ export class SigninComponent implements OnInit {
   /**
    * Creates the login form
    */
-  createLoginForm(): void {
+  createLoginForm() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
 
-  onFormSubmit(): void {
+  onFormSubmit() {
     if (this.loginForm.valid) {
       const email: string = this.email.value;
       const password: string = this.password.value;
@@ -69,7 +63,7 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  tryLogin(email: string, password: string): void {
+  tryLogin(email: string, password: string) {
     this.authService.login(email, password).subscribe(
       (onSuccess: boolean) => {
         if (onSuccess) {

@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { GroupErrorStateMatcher, StandardErrorStateMatcher } from '~core/custom-error-matchers';
 import { CustomValidators } from '~core/custom-validators';
 import { AuthService } from '~core/providers/auth.service';
-import { ResourcesService } from '~core/providers/resources.service';
 import { AlertService } from '../../../core/providers/alert.service';
 
 @Component({
@@ -13,7 +12,6 @@ import { AlertService } from '../../../core/providers/alert.service';
 })
 export class RegisterComponent implements OnInit {
 
-  rsc: any;
   registerForm: FormGroup;
   standardMatcher: StandardErrorStateMatcher;
   groupMatcher: GroupErrorStateMatcher;
@@ -37,17 +35,13 @@ export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private alertService: AlertService,
-    private resourcesService: ResourcesService
+    private alertService: AlertService
   ) {
     this.standardMatcher = new StandardErrorStateMatcher();
     this.groupMatcher = new GroupErrorStateMatcher();
   }
 
-  ngOnInit(): void {
-    // Init page resources (static text...)
-    this.rsc = this.resourcesService.get().pages.register;
-
+  ngOnInit() {
     // Init login form
     this.createRegisterForm();
   }
@@ -55,7 +49,7 @@ export class RegisterComponent implements OnInit {
   /**
    * Creates the registration form
    */
-  createRegisterForm(): void {
+  createRegisterForm() {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -66,7 +60,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onFormSubmit(): void {
+  onFormSubmit() {
     console.log(this.registerForm.get('matchingPassword'));
     if (this.registerForm.valid) {
 
@@ -77,7 +71,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  tryRegister(email: string, password: string): void {
+  tryRegister(email: string, password: string) {
     this.authService.register(email, password).subscribe(
       (onSuccess: boolean) => {
         console.log('REGISTRATION OK!');
