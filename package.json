@@ -5,10 +5,15 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng build --prod",
+    "build-staging": "ng build --configuration=staging",
+    "build-prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy-staging": "firebase deploy -P staging",
+    "deploy-prod": "firebase deploy -P production",
+    "build-and-deploy-staging": "npm run build-staging && npm run deploy-staging",
+    "build-and-deploy-prod": "npm run build-prod && npm run deploy-prod"
   },
   "private": true,
   "dependencies": {

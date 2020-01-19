@@ -1,7 +1,7 @@
-import { FIREBASE_CONFIG } from '../firebase-config-prod';
+import { FIREBASE_CONFIG } from '../firebase-config';
 
 export const environment = {
-  production: true,
+  production: false,
   firebase: {
     apiKey: FIREBASE_CONFIG.apiKey,
     authDomain: FIREBASE_CONFIG.authDomain,

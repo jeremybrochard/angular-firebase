@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "my-first-project-b820b"
+    "default": "my-first-project-b820b",
+    "staging": "my-first-project-b820b",
+    "production": "angular-firebase-production"
   }
 }

@@ -2,12 +2,14 @@
 
 # sensitive data (API keys...)
 /src/firebase-config.ts
+/src/firebase-config-prod.ts
 
 # compiled output
 /dist
 /dist-server
 /tmp
 /out-tsc
+/public
 
 # dependencies
 /node_modules
