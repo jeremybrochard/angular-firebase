@@ -1,0 +1,9 @@
+<mat-form-field fxFill>
+  <input matInput [placeholder]="placeholder | translate" [formControl]="control" [type]="type"
+    [errorStateMatcher]="errorStateMatcher">
+  <mat-error *ngFor="let error of validationErrors">
+    <ng-container *ngIf="control.hasError(error.name)">
+      {{error.errorLabel | translate:param}}
+    </ng-container>
+  </mat-error>
+</mat-form-field>
