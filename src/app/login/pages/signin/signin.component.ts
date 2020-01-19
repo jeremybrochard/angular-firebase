@@ -5,13 +5,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '~core/providers/auth.service';
 import { AlertService } from '~core/providers/alert.service';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
-
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -20,7 +13,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class SigninComponent implements OnInit {
 
   loginForm: FormGroup;
-  matcher: MyErrorStateMatcher;
 
   get email(): FormControl {
     return this.loginForm.get('email') as FormControl;
@@ -35,9 +27,7 @@ export class SigninComponent implements OnInit {
     private formBuilder: FormBuilder,
     private alertService: AlertService,
     private router: Router
-  ) {
-    this.matcher = new MyErrorStateMatcher();
-  }
+  ) { }
 
   ngOnInit() {
     // Init login form
