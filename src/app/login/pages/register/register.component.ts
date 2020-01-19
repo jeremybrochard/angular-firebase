@@ -13,7 +13,6 @@ import { AlertService } from '../../../core/providers/alert.service';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-  standardMatcher: StandardErrorStateMatcher;
   groupMatcher: GroupErrorStateMatcher;
 
   get name(): FormControl {
@@ -37,7 +36,6 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private alertService: AlertService
   ) {
-    this.standardMatcher = new StandardErrorStateMatcher();
     this.groupMatcher = new GroupErrorStateMatcher();
   }
 
