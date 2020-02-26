@@ -6,39 +6,23 @@
     <img src="assets/logo.png" alt="site logo">
   </div>
 
-  <div class="register-form-content" fxLayout="column" fxLayoutGap="40px">
+  <div *ngIf="registerForm" class="register-form-content" fxLayout="column" fxLayoutGap="40px">
 
     <!-- Form Content -->
     <form [formGroup]="registerForm" (submit)="onFormSubmit()">
       <div fxLayout="column" fxLayoutGap="22px">
 
-        <mat-form-field>
-          <input matInput placeholder="{{ 'pages.register.placeholders.name' | translate }}" formControlName="name" type="text" [errorStateMatcher]="standardMatcher">
-          <mat-error *ngIf="name.hasError('required')" translate>
-            pages.register.errors.nameRequired
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="{{ 'pages.register.placeholders.email' | translate }}" formControlName="email" type="email" [errorStateMatcher]="standardMatcher">
-          <mat-error *ngIf="email.hasError('email') && !email.hasError('required')" translate>
-            pages.register.errors.email
-          </mat-error>
-          <mat-error *ngIf="email.hasError('required')" translate>
-            pages.register.errors.emailRequired
-          </mat-error>
-        </mat-form-field>
+        <app-input-text name="name" [control]="name" placeholder="pages.register.placeholders.name"></app-input-text>
+        <app-input-text name="email" type="email" [control]="email" placeholder="pages.register.placeholders.email">
+        </app-input-text>
 
         <div formGroupName="matchingPassword" fxLayout="column" fxLayoutGap="22px">
-          <mat-form-field>
-            <input matInput placeholder="{{ 'pages.register.placeholders.password' | translate }}" formControlName="password" type="password" [errorStateMatcher]="standardMatcher">
-            <mat-error *ngIf="password.hasError('required')" translate>
-              pages.register.errors.passwordRequired
-            </mat-error>
-          </mat-form-field>
+          <app-input-text name="password" type="password" [control]="password"
+            placeholder="pages.register.placeholders.password"></app-input-text>
 
           <mat-form-field>
-            <input matInput placeholder="{{ 'pages.register.placeholders.passwordConfirm' | translate }}" formControlName="passwordConfirm" type="password" [errorStateMatcher]="groupMatcher">
+            <input matInput placeholder="{{ 'pages.register.placeholders.passwordConfirm' | translate }}"
+              formControlName="passwordConfirm" type="password" [errorStateMatcher]="groupMatcher">
             <mat-error *ngIf="passwordConfirm.hasError('required')" translate>
               pages.register.errors.passwordConfirmRequired
             </mat-error>
@@ -46,7 +30,6 @@
               pages.register.errors.passwordsnotEquals
             </mat-error>
           </mat-form-field>
-
         </div>
 
         <button mat-raised-button color="primary">{{ 'pages.register.buttons.register' | translate }}</button>

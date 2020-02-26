@@ -41,5 +41,10 @@
         "passwordsnotEquals": "Password does not match the confirm password"
       }
     }
+  },
+  "validators": {
+    "required": "{{field}} is required",
+    "email": "Please enter a valid email address",
+    "areEquals": "Fields are not equals"
   }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { GroupErrorStateMatcher, StandardErrorStateMatcher } from '~core/custom-error-matchers';
 import { CustomValidators } from '~core/custom-validators';
 import { AuthService } from '~core/providers/auth.service';
+import { GroupErrorStateMatcher, StandardErrorStateMatcher } from '~shared/custom-error-matchers';
 import { AlertService } from '../../../core/providers/alert.service';
 
 @Component({
@@ -13,7 +13,6 @@ import { AlertService } from '../../../core/providers/alert.service';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-  standardMatcher: StandardErrorStateMatcher;
   groupMatcher: GroupErrorStateMatcher;
 
   get name(): FormControl {
@@ -37,7 +36,6 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private alertService: AlertService
   ) {
-    this.standardMatcher = new StandardErrorStateMatcher();
     this.groupMatcher = new GroupErrorStateMatcher();
   }
 
@@ -61,7 +59,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onFormSubmit() {
-    console.log(this.registerForm.get('matchingPassword'));
     if (this.registerForm.valid) {
 
       const email: string = this.email.value;

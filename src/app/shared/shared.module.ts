@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule, MatListModule, MatCardModule, MatProgressSpinnerModule, MatFormFieldModule } from '@angular/material';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { TranslateModule } from '@ngx-translate/core';
+import { InputTextComponent } from './components/input-text/input-text.component';
 
 const MATERIAL_COMPONENTS = [
   MatButtonModule,
@@ -13,6 +14,10 @@ const MATERIAL_COMPONENTS = [
   MatCardModule,
   MatProgressSpinnerModule,
   MatFormFieldModule
+];
+
+const INPUTS_COMPONENTS = [
+  InputTextComponent
 ];
 
 @NgModule({
@@ -24,14 +29,17 @@ const MATERIAL_COMPONENTS = [
     MATERIAL_COMPONENTS,
     TranslateModule
   ],
-  declarations: [],
+  declarations: [
+    INPUTS_COMPONENTS
+  ],
   exports: [
     CommonModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     SimpleNotificationsModule,
     MATERIAL_COMPONENTS,
-    TranslateModule
+    TranslateModule,
+    INPUTS_COMPONENTS
   ]
 })
 export class SharedModule { }
